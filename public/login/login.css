@@ -1,59 +1,92 @@
 * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
     box-sizing: border-box;
-    font-family: Bahnschrift;
-}
-
-html {
-    height: 100%;
 }
 
 body {
-    background-color: #354152;
-    color: #7e8ba3;
-    margin: 0;
-    min-height: 100%;
+    min-height: 100vh;
+    background: #354152;
+    font: 300 1rem / 1.5 Helvetica Neue, sans-serif; /* Font weight, font size, line height, font, fallback font */
 }
 
-input {
-    font: inherit;
-    border: 1px solid #242c37;
-    border-radius: 999px;
-    background-color: transparent;
+.login-form {
+    box-shadow: 0 0 250px #000;
+    width: 360px;
+    background: #354152;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-form h1 {
     text-align: center;
-    background-size: 1.5rem;
-    background-position: 1rem 50%;
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    box-sizing: border-box;
-}
-
-input::placeholder {
-      color: #7e8ba3;
-}
-
-button {
-    background-color: #242c37;
-    border: 1px solid #242c37;
-    border-radius: 999px;
-    color: #7e8ba3;
-    margin: 8px 0;
-    cursor: pointer;
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    box-sizing: border-box;
-}
-
-h2 {
     font-size: 2.75rem;
     font-weight: 100;
     margin: 0 0 1rem;
     text-transform: uppercase;
-}
-
-a {
     color: #7e8ba3;
 }
 
+.form-input-container {
+    background-color: transparent;
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    position: relative;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.form-input-container input {
+    font-size: 15px;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
+    text-align: center;
+}
+
+.form-input-container input::placeholder {
+    color: #7e8ba3;
+}
+
+.form-input-container input:focus::placeholder {
+    color: transparent;
+}
+
+.form-submit-button {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    background: linear-gradient(160deg, #b570e6, #49378f, #e6b8e3);
+    background-size: 200%;
+    font-size: 25px;
+    color: #ffffff;
+    transition: .5s;
+}
+
+.form-submit-button:hover {
+    background-position: right;
+}
+
+.bottom-text {
+    color: #7e8ba3;
+    margin-top: 60px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.bottom-text a {
+    color: #b570e6;
+}

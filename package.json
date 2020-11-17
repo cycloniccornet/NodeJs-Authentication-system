@@ -1,0 +1,27 @@
+{
+  "name": "Nodejs-2020-Mandatory2",
+  "version": "1.0.0",
+  "description": "LoginPage mandatory assignment 2 for nodejs elective 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycloniccornet/Nodejs-2020-Mandatory2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cycloniccornet/Nodejs-2020-Mandatory2/issues"
+  },
+  "homepage": "https://github.com/cycloniccornet/Nodejs-2020-Mandatory2#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "express-session": "^1.17.1"
+  }
+}

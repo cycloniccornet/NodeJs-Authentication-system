@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const authenticateRouter = require('./routes/authenticateRoute');
 
 app.use(express.static(__dirname + "/public"));
+app.use(authenticateRouter);
 
-app.get("/login", (req, res) => {
+app.get("/", (req, res) => {
     return res.sendFile(__dirname + "/public/login/login.html");
 });
 

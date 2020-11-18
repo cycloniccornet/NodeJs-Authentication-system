@@ -1,13 +1,17 @@
 const router = require('express').Router();
-const bodyParser = require("body-parser");
 const fetchOneUser = require('../Mongodb/read');
+const express = require('express');
 
+
+router.use(express.json());
+router.use(express.urlencoded( {extended: true}));
 
 router.post('/auth/login', (req, res) => {
+    console.log("req.body.email", req.body.email);
+    console.log("req.body.passowrd", req.body.password);
 
-
-    email = 'patr180499@gmail.com';
-    password = '1234';
+    email = req.body.email;
+    password = req.body.password;
 
     fetchOneUser(email);
 

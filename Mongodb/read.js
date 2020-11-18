@@ -3,7 +3,6 @@ const connectionURL = 'mongodb://localhost:27017';
 
 
 async function fetchOneUser(email) {
-    console.log("Called fetch one user")
     try {
         await MongoClient.connect(connectionURL, {useUnifiedTopology: true}, (error, client) => {
             if (error) throw new Error(error);

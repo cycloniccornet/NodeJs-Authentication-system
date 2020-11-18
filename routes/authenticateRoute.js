@@ -10,10 +10,15 @@ router.post('/auth/login', (req, res) => {
     console.log("req.body.email", req.body.email);
     console.log("req.body.passowrd", req.body.password);
 
-    email = req.body.email;
+    userEmail = req.body.email;
     password = req.body.password;
 
-    fetchOneUser(email);
+    try {
+        const user = fetchOneUser(userEmail);
+        console.log("Data from Router:", user);
+    } catch (error) {
+        if (error)  if (error) throw new Error(error);
+    }
 
     return res.send( {data: "ok"} );
 });

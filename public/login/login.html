@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="/auth/login" method="post" class="login-form active"  >
+    <form action="/auth/login" method="post" class="login-form"  >
         <h1>Login</h1>
 
         <div class="form-input-container">
@@ -20,31 +20,8 @@
         </div>
 
         <input type="submit" class="form-submit-button" value="Login">
-    </form>
-
-    <form action="" id="signup-form" class="login-form" >
-        <h1>Sign in</h1>
-
-        <div class="form-input-container">
-            <input type="text" placeholder="First name">
-        </div>
-
-        <div class="form-input-container">
-            <input type="text" placeholder="Last name">
-        </div>
-
-        <div class="form-input-container">
-            <input type="email" placeholder="email@address.com">
-        </div>
-
-        <div class="form-input-container">
-            <input type="password" placeholder="Your password">
-        </div>
-
-        <input type="submit" class="form-submit-button" value="Login">
-
         <div class="bottom-text">
-            <p>Already have an account? <button id="signup" onclick="changeToLoginForm()">Login</button></p>
+            <p>don't have an account yet? <a href="/register">Sign up</a></p>
         </div>
     </form>
 

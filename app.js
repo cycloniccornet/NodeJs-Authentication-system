@@ -9,6 +9,10 @@ app.get("/", (req, res) => {
     return res.sendFile(__dirname + "/public/login/login.html");
 });
 
+app.get("/register", (req, res) => {
+    return res.sendFile(__dirname + "/public/signup/signup.html");
+});
+
 const port = process.env.PORT || 8080;
 app.listen(port, (error) =>{
     if (error){

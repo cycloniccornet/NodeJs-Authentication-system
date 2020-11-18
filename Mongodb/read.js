@@ -2,24 +2,29 @@ const MongoClient = require('mongodb').MongoClient;
 const connectionURL = 'mongodb://localhost:27017';
 
 
-async function fetchOneUser(email) {
+function fetchOneUser(email) {
+
     try {
-        await MongoClient.connect(connectionURL, {useUnifiedTopology: true}, (error, client) => {
+         MongoClient.connect(connectionURL, {useUnifiedTopology: true},  async (error, client) => {
             if (error) throw new Error(error);
 
             const auth = client.db("auth");
 
-            const users = auth.collection("users");
+             const users = auth.collection("users");
 
-            users.find( {email: email} ).toArray((error, fetchedUser) => {
-                if (error) throw new Error(error);
-                console.log(fetchedUser);
-                client.close()
-            });
+             await users.find( {email: email} ).toArray( (error, fetchedUser) => {
+                 if (error) throw new Error(error);
+
+                 console.log("User fetched from database", fetchedUser[0]);
+             });
+
         });
+
     } catch (error) {
         if (error) throw new Error(error);
+
     }
+    return 'Data skal indsættes her \n';
 }
 
 module.exports = fetchOneUser;

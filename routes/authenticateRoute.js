@@ -1,26 +1,16 @@
 const router = require('express').Router();
-const fetchOneUser = require('../Mongodb/read');
+const authenticateUser = require('../Mongodb/read');
 const express = require('express');
+
+const MongoClient = require('mongodb').MongoClient;
+const connectionURL = 'mongodb://localhost:27017';
 
 
 router.use(express.json());
 router.use(express.urlencoded( {extended: true}));
 
-router.post('/auth/login', (req, res) => {
-    console.log("req.body.email", req.body.email);
-    console.log("req.body.passowrd", req.body.password);
-
-    userEmail = req.body.email;
-    password = req.body.password;
-
-    try {
-        const user = fetchOneUser(userEmail);
-        console.log("Data from Router:", user);
-    } catch (error) {
-        if (error)  if (error) throw new Error(error);
-    }
-
-    return res.send( {data: "ok"} );
+router.post('/auth/login', async (req, res) => {
+    authenticateUser(req, res);
 });
 
 router.post('/auth/register', (req, res) => {

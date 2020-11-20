@@ -1,30 +1,37 @@
 const MongoClient = require('mongodb').MongoClient;
 const connectionURL = 'mongodb://localhost:27017';
 
-
-function fetchOneUser(email) {
+async function authenticateUser(req, res) {
 
     try {
-         MongoClient.connect(connectionURL, {useUnifiedTopology: true},  async (error, client) => {
+        MongoClient.connect(connectionURL, {useUnifiedTopology: true}, (error, client) => {
             if (error) throw new Error(error);
-
             const auth = client.db("auth");
+            const users = auth.collection("users");
 
-             const users = auth.collection("users");
 
-             await users.find( {email: email} ).toArray( (error, fetchedUser) => {
-                 if (error) throw new Error(error);
+            users.find({email: req.body.email}).toArray((error, fetchedUser) => {
+                if (error) throw new Error(error);
 
-                 console.log("User fetched from database", fetchedUser[0]);
-             });
+                const userData = fetchedUser[0]
+                console.log("Userdata: ", userData);
+                if (req.body.password === userData.password ) {
 
+                    res.status(200).send({
+                        message: 'Login complete.',
+                        firstname: userData.firstname,
+                        lastname: userData.lastname,
+                        email: userData.email
+                    })
+                    //return res.redirect("/test");
+
+                } else return res.status(400).redirect("/");
+            });
         });
 
     } catch (error) {
-        if (error) throw new Error(error);
-
+        console.log(error);
     }
-    return 'Data skal indsættes her \n';
 }
 
-module.exports = fetchOneUser;
+module.exports = authenticateUser;
